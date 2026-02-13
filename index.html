@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>Sanduni Prarthana · animated personal site</title>
+  <!-- Google Font & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* --------------------------------
+       LIGHT PINK DREAM – ANIMATIONS
+    -------------------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(145deg, #ffdbdf 0%, #ffccd3 100%);
+      color: #4a3f42;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* smooth container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 2rem;
+    }
+
+    /* all sections share soft white card with subtle shadow & animation space */
+    section {
+      background: rgba(255, 245, 245, 0.7);
+      backdrop-filter: blur(3px);
+      border-radius: 42px 18px 42px 18px;
+      margin-bottom: 5rem;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 20px 35px rgba(255, 150, 150, 0.15),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+      transition: transform 0.3s ease;
+    }
+
+    /* every section gently lifts on hover (decent interact) */
+    section:hover {
+      transform: translateY(-6px);
+    }
+
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.8rem;
+      position: relative;
+      display: inline-block;
+      color: #b3707a;
+      text-shadow: 2px 2px 6px rgba(255, 220, 220, 0.5);
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 5px;
+      background: #ffb3b9;
+      border-radius: 8px;
+      animation: lineGlow 3s infinite alternate;
+    }
+
+    @keyframes lineGlow {
+      0% { width: 70px; opacity: 0.7; background: #ffb3b9; }
+      100% { width: 120px; opacity: 1; background: #ff8590; }
+    }
+
+    /* ---------- HERO SECTION : BIG ANIMATED TITLE + IMAGE ---------- */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+      padding: 2rem 2.5rem;
+    }
+
+    .hero-content {
+      animation: fadeSlideIn 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .hero-title {
+      font-size: 3.7rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.8rem;
+      color: #9f5e6a;
+      text-shadow: 6px 6px 12px rgba(255, 174, 182, 0.3);
+      animation: titleFloat 3s infinite alternate ease-in-out;
+      transform-origin: left;
+    }
+
+    /* subtle floating for title */
+    @keyframes titleFloat {
+      0% { transform: translateY(0px) scale(1); text-shadow: 6px 6px 12px rgba(255, 174, 182, 0.2); }
+      100% { transform: translateY(-6px) scale(1.02); text-shadow: 12px 12px 20px rgba(255, 130, 150, 0.3); }
+    }
+
+    .hero-paragraph {
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin: 1.5rem 0;
+      color: #5f4e53;
+      background: rgba(255, 230, 235, 0.5);
+      padding: 1.2rem 1.8rem;
+      border-radius: 60px 20px 60px 20px;
+      backdrop-filter: blur(2px);
+      border: 1px solid #ffe4e9;
+      animation: softGlow 4s infinite;
+    }
+
+    @keyframes softGlow {
+      0% { box-shadow: 0 0 0 0 rgba(255, 160, 170, 0.2); }
+      50% { box-shadow: 0 0 18px 8px rgba(255, 150, 170, 0.2); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 160, 170, 0.2); }
+    }
+
+    /* animated portrait image */
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .person-img {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 42% 58% 70% 30% / 44% 36% 64% 56%;
+      box-shadow: 16px 18px 30px rgba(190, 110, 120, 0.3);
+      border: 6px solid white;
+      animation: morphImage 7s infinite alternate, float 5s infinite alternate;
+    }
+
+    @keyframes morphImage {
+      0% { border-radius: 42% 58% 70% 30% / 44% 36% 64% 56%; }
+      25% { border-radius: 58% 42% 50% 50% / 50% 44% 56% 50%; }
+      50% { border-radius: 38% 62% 44% 56% / 60% 38% 62% 40%; }
+      75% { border-radius: 62% 38% 56% 44% / 48% 62% 38% 52%; }
+      100% { border-radius: 42% 58% 70% 30% / 44% 36% 64% 56%; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(-1deg); }
+      100% { transform: translateY(-14px) rotate(1deg); }
+    }
+
+    /* ---------- EDUCATION : 5 SCHOOLS animated cards ---------- */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .edu-item {
+      background: white;
+      padding: 1.7rem 1rem;
+      border-radius: 32px 12px 32px 12px;
+      text-align: center;
+      font-weight: 600;
+      color: #88555c;
+      box-shadow: 0 10px 15px rgba(255, 128, 128, 0.1);
+      border: 1px solid #ffe2e5;
+      transition: all 0.25s;
+      animation: cardPop 0.9s both;
+      animation-delay: calc(0.1s * var(--i, 1));
+      transform: scale(1);
+    }
+
+    .edu-item:hover {
+      background: #ffe7ec;
+      transform: scale(1.04) translateY(-6px);
+      box-shadow: 0 22px 25px rgba(255, 100, 130, 0.2);
+      border-color: #ffa5b0;
+    }
+
+    @keyframes cardPop {
+      0% { opacity: 0; transform: scale(0.8) translateY(30px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .edu-item i {
+      font-size: 2.2rem;
+      color: #ff8a9a;
+      margin-bottom: 0.8rem;
+    }
+
+    /* ---------- GALLERY : 5 IMAGES – ANIMATIONAL GALLERY ---------- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px 10px 28px 10px;
+      box-shadow: 0 25px 30px -10px rgba(210, 120, 130, 0.3);
+      aspect-ratio: 1 / 1.1;
+      transition: all 0.35s;
+      animation: galleryReveal 1s both;
+      animation-delay: calc(0.15s * var(--order, 0));
+      border: 4px solid white;
+    }
+
+    @keyframes galleryReveal {
+      0% { opacity: 0; transform: rotateY(20deg) scale(0.7); }
+      100% { opacity: 1; transform: rotateY(0) scale(1); }
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.1), filter 0.4s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.15) rotate(2deg);
+      filter: brightness(1.05) contrast(1.1);
+    }
+
+    /* overlay animation */
+    .gallery-item::after {
+      content: "✧ ˚₊‧⁺˖♡";
+      position: absolute;
+      bottom: -40px;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 215, 220, 0.8);
+      color: #7b4b55;
+      padding: 0.7rem 0;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+      transition: bottom 0.3s ease;
+    }
+
+    .gallery-item:hover::after {
+      bottom: 0;
+    }
+
+    /* ---------- SOCIAL MEDIA – LAST PAGE (animated links) ---------- */
+    .social-section {
+      text-align: center;
+      padding: 3.5rem 2rem;
+      background: rgba(255, 230, 235, 0.8);
+      border-radius: 70px 18px 70px 18px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 85px;
+      height: 85px;
+      background: white;
+      border-radius: 30px 10px 30px 10px;
+      font-size: 2.5rem;
+      color: #a76973;
+      box-shadow: 0 15px 20px rgba(255, 80, 120, 0.2);
+      transition: all 0.35s;
+      text-decoration: none;
+      border: 2px solid #ffe0e3;
+      animation: socialWobble 2.5s infinite;
+      transform-origin: center;
+    }
+
+    /* each icon slightly different animation */
+    .social-icon:nth-child(1) { animation-delay: 0s; }
+    .social-icon:nth-child(2) { animation-delay: 0.2s; }
+    .social-icon:nth-child(3) { animation-delay: 0.4s; }
+    .social-icon:nth-child(4) { animation-delay: 0.6s; }
+    .social-icon:nth-child(5) { animation-delay: 0.8s; }
+
+    @keyframes socialWobble {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      25% { transform: rotate(6deg) scale(1.1); background: #ffe9ed; color: #b85c6a; }
+      75% { transform: rotate(-6deg) scale(1.08); background: #ffe0e8; }
+    }
+
+    .social-icon:hover {
+      background: #ffb6c1;
+      color: white;
+      transform: scale(1.2) translateY(-8px) rotate(5deg);
+      border-color: white;
+      box-shadow: 0 28px 35px rgba(245, 110, 140, 0.5);
+      animation: none;
+    }
+
+    /* ---------- SCROLL REVEAL (intersection observer) ---------- */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- RESPONSIVE & EXTRA ---------- */
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero-title { font-size: 2.8rem; }
+      .person-img { width: 230px; height: 230px; }
+      .container { padding: 1rem; }
+    }
+
+    @media (max-width: 500px) {
+      h2 { font-size: 1.9rem; }
+      .edu-grid { grid-template-columns: 1fr; }
+    }
+
+    /* decorative pink elements */
+    .footer-note {
+      margin-top: 3rem;
+      font-size: 0.95rem;
+      color: #b3858a;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    /* person paragraph style */
+    .highlight {
+      color: #b35462;
+      font-weight: 600;
+    }
+
+    /* custom light pink scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #ffe3e7;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #ffa5b2;
+      border-radius: 30px;
+      border: 3px solid #ffd2d8;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+
+    <!-- ███████ HERO SECTION – BIG ANIMATED NAME + PARAGRAPH + IMAGE ███████ -->
+    <section class="hero scroll-reveal">
+      <div class="hero-content">
+        <h1 class="hero-title">Sanduni Prarthana</h1>
+        <div class="hero-paragraph">
+          ✦ ˖⁺‧₊˚ <span class="highlight">M. K. P. Sandali Prarthana,</span>   a talented and driven student from the village of Magama. 
+          <span class="highlight">Born on June 15, 2006,</span> Sandali is currently pursuing her studies at Debarawewa National College. 
+          She is widely recognized for her exceptional <span class="highlight">skills in dancing,</span> a passion that shines through in 
+          her every performance. With a clear vision for her future, Sandali aspires to share her love for 
+          the arts by becoming a professional dancing teacher, inspiring the next generation through movement and rhythm.  ˚₊‧⁺˖ ✦ <br>
+        </div>
+        <!-- small extra animated detail -->
+        <div style="margin-top: 0.8rem; font-size: 1rem; color: #b4777e;">
+          <i class="fas fa-map-pin" style="margin-right: 0.5rem;"></i> based in pink horizons
+        </div>
+      </div>
+      <div class="hero-image">
+        <!-- portrait image (animated shape & float) -->
+        <img class="person-img" src="img (1).jpeg" alt="Sanduni Prarthana portrait" loading="lazy">
+      </div>
+    </section>
+
+    <!-- ███████ EDUCATION – 5 SCHOOLS with card animation ███████ -->
+    <section class="scroll-reveal">
+      <h2><i class="fas fa-graduation-cap" style="margin-right: 1rem; color: #ff8896;"></i> education journey</h2>
+      <div class="edu-grid">
+        <!-- 5 school items, each with icon and name, custom var for delay -->
+        <div class="edu-item" style="--i: 1;">
+          <i class="fas fa-seedling"></i>
+          <h3>Sunrise Montessori</h3>
+          <p style="font-weight: 300;">early learning · 2005-2008</p>
+        </div>
+        <div class="edu-item" style="--i: 2;">
+          <i class="fas fa-leaf"></i>
+          <h3>Maple Leaf Primary</h3>
+          <p style="font-weight: 300;">2009-2014</p>
+        </div>
+        <div class="edu-item" style="--i: 3;">
+          <i class="fas fa-book-open"></i>
+          <h3>Hillcrest Girls' School</h3>
+          <p style="font-weight: 300;">2015-2018</p>
+        </div>
+        <div class="edu-item" style="--i: 4;">
+          <i class="fas fa-flask"></i>
+          <h3>Riverside High</h3>
+          <p style="font-weight: 300;">2019-2022</p>
+        </div>
+        <div class="edu-item" style="--i: 5;">
+          <i class="fas fa-university"></i>
+          <h3>Univ. of Creative Arts</h3>
+          <p style="font-weight: 300;">2023-present · CS</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ███████ ANIMATIONAL IMAGE GALLERY – 5 IMAGES ███████ -->
+    <section class="scroll-reveal">
+      <h2><i class="fas fa-images" style="margin-right: 1rem; color: #ff8896;"></i> animated gallery</h2>
+      <div class="gallery-grid">
+        <!-- 5 placeholder images from picsum, each with alt & custom order delay -->
+        <div class="gallery-item" style="--order: 1;">
+          <img src="img (2).jpeg" alt="misty mountains" loading="lazy">
+        </div>
+        <div class="gallery-item" style="--order: 2;">
+          <img src="img (3).jpeg" alt="calm valley" loading="lazy">
+        </div>
+        <div class="gallery-item" style="--order: 3;">
+          <img src="img (4).jpeg" alt="abstract face" loading="lazy">
+        </div>
+        <div class="gallery-item" style="--order: 4;">
+          <img src="img (5).jpeg" alt="vintage camera" loading="lazy">
+        </div>
+        <div class="gallery-item" style="--order: 5;">
+          <img src="https://picsum.photos/id/1011/400/500" alt="elegant portrait" loading="lazy">
+        </div>
+      </div>
+      <p style="margin-top: 1.5rem; text-align: center; font-style: italic; color: #a55d68;">✧ hover to see magic — each image tells a story ✧</p>
+    </section>
+
+    <!-- ███████ LAST PAGE: SOCIAL MEDIA LINKS (5 PLATFORMS) ███████ -->
+    <section class="social-section scroll-reveal">
+      <h2 style="color: #a15764;"><i class="fas fa-heart" style="margin-right: 0.8rem; color: #ff6f7e;"></i> let's connect</h2>
+      <div style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #b4727c;">@sanduni_prarthana</div>
+      <div class="social-icons">
+        <!-- facebook -->
+        <a href="#" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <!-- whatsapp -->
+        <a href="#" class="social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <!-- tiktok -->
+        <a href="#" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <!-- instagram -->
+        <a href="#" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+        <!-- snapchat -->
+        <a href="#" class="social-icon" target="_blank"><i class="fab fa-snapchat-ghost"></i></a>
+      </div>
+      <div class="footer-note">
+        <i class="fas fa-crown" style="margin-right: 6px;"></i> stay playful, stay pink  <i class="fas fa-crown" style="margin-left: 6px;"></i>
+      </div>
+    </section>
+  </main>
+
+  <!-- ███████ JAVASCRIPT – SCROLL ANIMATION (intersection observer) + extra life ███████ -->
+  <script>
+    (function() {
+      "use strict";
+
+      // ---------- SCROLL REVEAL (all sections with .scroll-reveal) ----------
+      const revealElements = document.querySelectorAll('.scroll-reveal');
+      
+      if (revealElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              // you can optionally keep observing – but we stop after reveal
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2, rootMargin: '0px 0px -30px 0px' });  // subtle offset
+        
+        revealElements.forEach(el => observer.observe(el));
+      }
+
+      // force immediate check for elements already visible (hero etc)
+      window.addEventListener('load', function() {
+        revealElements.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 100) {
+            el.classList.add('revealed');
+          }
+        });
+      });
+
+      // ---------- ADD TINY EXTRA ANIMATION: TITLE GLOW (already keyframes) ----------
+      // also gives random delay to gallery items? no — but we assign via style, all good
+      
+      // fun: add dynamic year to education? not needed, but keep fresh
+      console.log("✧ ﾟ･*:.｡.  sanduni's animated world .｡.:*･ﾟ ✧");
+      
+      // make person image even more interactive – subtle tilt on mouse move? 
+      // just for extra "super animational" feel
+      const heroSection = document.querySelector('.hero');
+      const personImg = document.querySelector('.person-img');
+      if (heroSection && personImg) {
+        heroSection.addEventListener('mousemove', function(e) {
+          const rect = heroSection.getBoundingClientRect();
+          const x = e.clientX - rect.left; // x pos within hero
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const deltaX = (x - centerX) / 30;
+          const deltaY = (y - centerY) / 30;
+          personImg.style.transform = `rotateY(${deltaX}deg) rotateX(${-deltaY}deg) scale(1.02)`;
+        });
+        heroSection.addEventListener('mouseleave', function() {
+          personImg.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
+        });
+      }
+
+      // smooth hover effect for social icons also defined in CSS — all good
+    })();
+  </script>
+
+  <!-- ensure that even if scripts delayed, initial animation works -->
+  <style>
+    /* pre-style for scroll reveal hidden state (only if not revealed yet) */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .scroll-reveal.revealed {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    /* hero inside scroll-reveal, but hero has own animation — we keep both */
+    .hero.scroll-reveal {
+      opacity: 1; /* we don't want hero hidden because it already has fadeSlideIn; keep consistency */
+      transform: none;
+    }
+    .hero.scroll-reveal.revealed {
+      opacity: 1;
+      transform: none;
+    }
+    /* but still we want hero to have scroll reveal class but not hidden: we override */
+    .hero.scroll-reveal {
+      opacity: 1;
+      transform: none;
+    }
+    /* adjust for other sections to be initially hidden — hero is visible anyway, but we want animation */
+    /* we also set hero animation via keyframe, so it's fine */
+  </style>
+
+  <!-- fix: ensure hero is always visible and animated (we override scroll-reveal for hero) -->
+  <script>
+    (function secondaryFix() {
+      // make sure hero is visible and keep its entrance animation
+      const hero = document.querySelector('.hero');
+      if (hero) {
+        hero.classList.add('revealed');
+        hero.style.opacity = 1;
+        hero.style.transform = 'none';
+      }
+      // pre-reveal social section if visible? observer will handle, but we keep fallback
+    })();
+  </script>
+
+</body>
+</html>
